@@ -1,24 +1,22 @@
-# **David GABIAM**
+# 🚀 Architecture Microservices avec Spring Cloud, Keycloak et Angular  
 
-# Microservices school manag app
+Ce projet met en œuvre une architecture microservices en utilisant Spring Cloud pour la gestion des services, Eureka pour la découverte des services, Keycloak pour la gestion des identités et de la sécurité, Log4j pour la gestion des logs et JUnit pour les tests unitaires. Il comprend également une interface utilisateur développée en Angular permettant d’interagir avec les microservices.  
 
-Ce projet met en pratique les microservices. On y retrouve l'utilisation de **spring cloud** comme api gateway, la discovery **eureka** pour la régistration des services ,  la gestion de la sécurité avec l'outil **Keycloak**, la gestion des logs avec
-**log4j**, l'implémentation des test unitaires avec **junit** , un minifront en **angular**. 
+L’objectif principal de ce projet est de démontrer comment construire une application distribuée où chaque service fonctionne de manière indépendante tout en communiquant avec les autres services via une API Gateway centralisée. L’architecture permet ainsi une évolutivité, une meilleure gestion des accès et une surveillance efficace du système grâce aux logs et aux tests.  
 
-![capt1](./captures/001.png)
+L’application repose sur plusieurs composants clés. Tout d’abord, l’**API Gateway** basée sur Spring Cloud joue un rôle fondamental en servant de point d’entrée unique pour toutes les requêtes et en appliquant les règles de sécurité définies avec Keycloak. Elle permet également de centraliser la gestion des services et d’assurer un équilibrage de charge lorsque plusieurs instances d’un microservice sont en cours d’exécution. Pour cela, Spring Cloud Gateway est configuré afin de router les requêtes vers les microservices adéquats en fonction des chemins définis dans le fichier de configuration.  
 
-![capt2](./captures/002.png)
+Ensuite, **Eureka Service Discovery** permet aux microservices de s’enregistrer dynamiquement et de découvrir d’autres services sans avoir besoin de connaître leurs adresses exactes. Cela permet une plus grande flexibilité et facilite le déploiement de nouveaux services sans nécessiter de modifications manuelles dans la configuration des services existants.  
 
-![capt3](./captures/003.png)
+La sécurité est gérée par **Keycloak**, un serveur d’authentification qui fournit des fonctionnalités avancées telles que l’authentification OAuth2, OpenID Connect et la gestion des rôles. Chaque requête envoyée aux microservices doit être authentifiée via Keycloak, garantissant ainsi un accès sécurisé aux différentes fonctionnalités de l’application. La configuration de Keycloak dans les services backend se fait en définissant un serveur d’autorisation dans les propriétés de configuration, permettant ainsi aux services de vérifier l’authenticité des tokens JWT envoyés par les clients.  
 
-![capt4](./captures/004.png)
+Pour assurer une traçabilité efficace des événements de l’application, **Log4j** est utilisé pour la gestion des logs. Chaque service est configuré pour enregistrer ses propres logs, ce qui facilite l’analyse des erreurs et le suivi des requêtes à travers l’ensemble du système. Grâce à Log4j, il est possible de générer des fichiers de logs détaillés, comprenant des informations sur les requêtes entrantes, les réponses envoyées, ainsi que les éventuelles erreurs survenues lors du traitement des données.  
 
-![capt5](./captures/005.png)
+L’implémentation de **tests unitaires** est une étape essentielle pour garantir la fiabilité et la stabilité des microservices. Avec **JUnit**, des tests sont écrits pour valider les différentes fonctionnalités des services, notamment la récupération des données, la gestion des erreurs et les interactions avec la base de données. Ces tests permettent de s’assurer que chaque service fonctionne correctement de manière isolée et qu’il répond aux attentes définies dans les spécifications du projet.  
 
-![capt6](./captures/006.png)
+En complément des services backend, le projet inclut un **mini front-end développé en Angular** permettant d’interagir avec les microservices. Cette interface utilisateur consomme les API exposées par l’API Gateway et affiche les données en temps réel. Elle offre notamment des fonctionnalités telles que l’affichage de listes d’éléments récupérés depuis la base de données, l’authentification des utilisateurs via Keycloak et la gestion des droits d’accès en fonction des rôles définis dans Keycloak.  
 
-![capt7](./captures/007.png)
-
+L’exécution du projet suit une série d’étapes bien définies. Tout d’abord, il faut démarrer **Eureka Server**, qui servira de registre central pour les microservices. Ensuite, il est nécessaire de lancer Keycloak et de configurer le realm ainsi que les clients et utilisateurs requis. Une fois ces services démarrés, l’API Gateway peut être lancée, suivie des différents microservices. Enfin, le front-end Angular peut être exécuté pour permettre aux utilisateurs d’interagir avec l’application via une interface graphique intuitive.  
 
 
-✍ **Auteur** : @mrDav90
+notons bien que ce travail a été fais de façon collective et de l'entraide
