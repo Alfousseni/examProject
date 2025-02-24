@@ -1,0 +1,27 @@
+<nz-sider
+  class="menu-sidebar"
+  nzCollapsible
+  nzWidth="20vw"
+  nzTheme="light"
+  nzBreakpoint="md"
+  [(nzCollapsed)]="isCollapsed"
+  [nzTrigger]="null"
+>
+  <div class="sidebar-logo">
+    <a href="#">
+      <!-- <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" /> -->
+      <h1>School Management</h1>
+    </a>
+  </div>
+  <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+    <li nz-menu-item nzMatchRouter>
+      <a routerLink="/dashboard">Tableau de bord</a>
+    </li>
+    <li nz-menu-item nzMatchRouter>
+      <a routerLink="/students">Etudiants</a>
+    </li>
+    <li nz-menu-item nzMatchRouter>
+      <a routerLink="/courses">Cours</a>
+    </li>
+  </ul>
+</nz-sider>

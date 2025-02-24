@@ -1,0 +1,53 @@
+<div class="login-container">
+  <nz-card class="form-container">
+    <h2 nz-typography>School Management</h2>
+  
+    <form
+      nz-form
+      nzLayout="vertical"
+      [formGroup]="loginForm"
+      class="login-form"
+      (ngSubmit)="submitForm()"
+    >
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="userName">
+          Entrer votre login</nz-form-label
+        >
+        <nz-form-control nzErrorTip="Veuillez entrer votre login!">
+          <nz-input-group nzPrefixIcon="user">
+            <input
+              type="text"
+              nz-input
+              formControlName="username"
+              placeholder="Login"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="username">
+          Entrer votre mot de passe</nz-form-label
+        >
+        <nz-form-control nzErrorTip="Veuillez entrer votre mot de passe!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input
+              type="password"
+              nz-input
+              formControlName="password"
+              placeholder="Mot de passe"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <br>
+      <button
+        nz-button
+        class="login-form-button login-form-margin"
+        [nzType]="'primary'"
+        style="width: 100%;"
+      >
+        Se connecter
+      </button>
+    </form>
+  </nz-card>
+</div>

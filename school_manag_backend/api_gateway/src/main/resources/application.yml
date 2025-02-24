@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: api_gateway
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+  cloud:
+    discovery:
+      enabled: true
+    config:
+      enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: users_service
+          uri: http://localhost:8081 #lb://USERS_SERVICE #http://localhost:8081
+          predicates:
+            - Path=/api/v1/**
+            #- StripPrefix=1
+        - id: cours_service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/v1/**
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/realms/school-manag-realm
+
+jwt:
+  auth:
+    converter:
+      resource-id: school-manag-client
+      principle-attribute: preferred_username
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  #instance:
+    #hostname: localhost
+    appname: api_gateway
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
+    org.springframework.security: DEBUG
+
+server:
+  port: 8088

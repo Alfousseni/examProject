@@ -1,0 +1,28 @@
+<nz-header>
+  <div class="app-header">
+    <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+      <nz-icon
+        class="trigger"
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+      />
+    </span>
+    <div>
+      <button
+        nz-button
+        [nzType]="'text'"
+        nz-dropdown
+        nzTrigger="click"
+        [nzDropdownMenu]="menu"
+      >
+        <nz-avatar nzIcon="user"></nz-avatar>
+      </button>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item (click)="logout()">Déconnexion</li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
+  </div>
+
+  
+</nz-header>
